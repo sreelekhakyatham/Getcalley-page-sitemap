@@ -1,0 +1,89 @@
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.event.InputEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
+import javax.imageio.ImageIO;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Timeouts;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Calley_Automation {
+
+	
+
+	public static void main(String[] args) throws Exception 
+	{
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://www.getcalley.com/page-sitemap.xml");
+		driver.manage().window().maximize();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//a[@href='https://www.getcalley.com/']")).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		
+		       String myWindowHandel=driver.getWindowHandle();
+		       driver.switchTo().window(myWindowHandel);
+		
+		       Robot robot=new Robot();
+		
+		       robot.setAutoDelay(1000);
+		   
+		       robot.mouseMove(400, 200);
+		       robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+		       robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+		   
+		       BufferedImage Image=robot.createScreenCapture(new Rectangle(new java.awt.Dimension(2000,800)));
+		       ImageIO.write(Image,"PNG", new File("D:\\\\Screenshot1.png"));
+		
+		       Thread.sleep(30);
+		       driver.navigate().back();
+		
+		 
+		 driver.findElement(By.xpath("//a[@href='https://www.getcalley.com/calley-lifetime-offer/']")).click();
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		
+		    
+		 		Image=robot.createScreenCapture(new Rectangle(new java.awt.Dimension(2000,800)));
+		 		ImageIO.write(Image,"PNG", new File("D:\\\\Screenshot2.png"));
+		 		Thread.sleep(30);
+		 		driver.navigate().back();
+			
+		 driver.findElement(By.xpath("//a[@href='https://www.getcalley.com/see-a-demo/']")).click();
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+			  
+			 	Image=robot.createScreenCapture(new Rectangle(new java.awt.Dimension(2000,800)));
+				ImageIO.write(Image,"PNG", new File("D:\\\\Screenshot3.png"));
+				Thread.sleep(30);
+				driver.navigate().back();
+				
+		 driver.findElement(By.xpath("//a[contains(.,'https://www.getcalley.com/calley-teams-features/')]")).click();
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+			  
+				Image=robot.createScreenCapture(new Rectangle(new java.awt.Dimension(2000,800)));
+			    ImageIO.write(Image,"PNG", new File("D:\\\\Screenshot4.png"));
+			    Thread.sleep(30);
+			    driver.navigate().back();
+			
+		driver.findElement(By.xpath("//a[@href='https://www.getcalley.com/calley-pro-features/']")).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+				
+				Image=robot.createScreenCapture(new Rectangle(new java.awt.Dimension(2000,800)));
+				ImageIO.write(Image,"PNG", new File("D:\\\\Screenshot5.png"));
+				Thread.sleep(30);
+				driver.navigate().back();
+				
+		driver.close();
+	
+			 
+		
+		
+	}
+
+
+
+}
